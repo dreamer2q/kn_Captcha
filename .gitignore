@@ -1,3 +1,15 @@
+cap
+cap1
+code
+code2
+code3
+predict
+predict1
+
+*.model
+*.jpg
+.vscode
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
