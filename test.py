@@ -14,11 +14,13 @@ import random
 
 md = model.Model()
 md.loadModel('test1.model')
+
 #md.newModel()
 #md.trainModel("cap","123456789",20*25)
-#md.checkModel("category","123456789",20*25)
+md.checkModel("category","123456789",20*25)
 #md.saveModel("test2.model")
 
+time.sleep(1000)
 #test_dir = "code"
 #for title in os.listdir(test_dir):
 #    filename = os.path.join(test_dir,title)
@@ -40,9 +42,9 @@ headers = {
 
 url = "https://skl.hdu.edu.cn/api/checkIn/create-code-img"
 
-#plt.ion()
-#plt.figure()
-#plt.axis('off')
+plt.ion()
+plt.figure()
+plt.axis('off')
 
 for i in range(20000):
 
@@ -56,19 +58,20 @@ for i in range(20000):
         f.close()
     imgs = captcha.Captcha(tmpfile).getImgs(4,(20,25))
     code = md.predict_imgs(imgs,20*25)
-    filename = ""
-    for c in code:
-        filename += str(c)
-    filename += "_"+str(random.randint(100000,999999)) + ".jpg"
-    Image.open(tmpfile).save(os.path.join(target_path,filename))
-    print(i,filename)
-    #img = mpimg.imread(tmpfile)
-    #plt.imshow(img)
-    #plt.pause(2)
-    #plt.show()
+    print("识别结果：",code)
+    #filename = ""
+    #for c in code:
+        #filename += str(c)
+    #filename += "_"+str(random.randint(100000,999999)) + ".jpg"
+    #Image.open(tmpfile).save(os.path.join(target_path,filename))
+    #print(i,filename)
+    img = mpimg.imread(tmpfile)
+    plt.imshow(img)
+    plt.pause(5)
+    plt.show()
     #time.sleep(0.1)
-    if i % 10 == 0:
-        print("take a break")
+    #if i % 10 == 0:
+        #print("take a break")
         #time.sleep(1)
 
 

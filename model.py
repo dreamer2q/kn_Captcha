@@ -43,10 +43,7 @@ class Model(object):
         pre_list = np.asarray(pre_list)
         result_list = self.model.predict(pre_list)
         
-        result = ''
-        for r in result_list:
-            result += r
-        return result
+        return ''.join(result_list)
 
     # train
     def trainModel(self,path,items,sz):
